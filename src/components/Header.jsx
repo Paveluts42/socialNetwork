@@ -1,9 +1,10 @@
 import React from "react";
+import s from "./Header.module.css";
 
 
 const Header = () => {
-    return (<header className="header">
-        <img src="http://klingonska.org/akademien/logo/ka-logo/ka-logo-color_transparent_bg.svg" />
+    return (<header className={s.header}>
+        <img src="https://fortimelp.fr/273-thickbox_default/formation-javascript-3-jours.jpg" />
     </header >)
 };
 

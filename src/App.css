@@ -2,6 +2,7 @@
   margin: 0 auto;
   display:grid;
 width: 1200px;
+height: 1300px;
 grid-template-areas: 
 "h h"
 "n c";
@@ -10,22 +11,12 @@ grid-template-areas:
   grid-template-columns: 2fr 10fr;
   /* grid-gap:10px; */
 }
-.header img{
-  width: 80px;
-}
-.header{
-grid-area: h;
-background-color: green;
-}
-.nav{
-grid-area: n;
-background-color: blanchedalmond
-}
+
 .content{
 grid-area: c;
 background-color: aqua
 }
 .content img{
-  width: 1000px;
+  width: 600px;
   height: 500;
 }

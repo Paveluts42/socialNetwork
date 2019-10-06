@@ -1,5 +1,5 @@
 import React from "react";
-
+import s from "./Profil.module.css";
 
 const Profil = () => {
     return (<div className="content">
@@ -16,11 +16,11 @@ const Profil = () => {
             New post
         </div>
 
-        <div>
+        <div className={s.item}>
 
             post 1
           </div>
-        <div>
+        <div className={s.item}>
             post 2
           </div>
     </div>)
