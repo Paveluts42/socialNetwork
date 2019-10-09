@@ -1,8 +1,18 @@
 
-.nav{
+.nav {
     grid-area: n;
-    background-color: blanchedalmond
-    }
-    .item{
-        color: white;
-    }
+    background-color: #C48754;
+    padding: 20px;
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+  margin-top: 10px;
+}
+.item a.activeLink{
+    color: gold;
+    width: 10000px;
+
+}

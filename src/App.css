@@ -1,20 +1,23 @@
-.app-wrapper{
-  margin: 10 auto;
-  display:grid;
-  margin-left: 50px;
-width: 1100px;
-height: 700px;
-grid-template-areas: 
-"h h "
-"n c";
+.app-wrapper {
+    margin: 10 auto;
+    display: grid;
+    margin-left: 50px;
+    width: 1100px;
+    height: 700px;
+    grid-template-areas: "h h " "n c";
 
-  grid-template-rows: 100px 1fr;
-  grid-template-columns: 2fr 10fr;
-  /* grid-gap:10px; */
+    grid-template-rows: 100px 1fr;
+    grid-template-columns: 2fr 10fr;
+    /* grid-gap:10px; */
 }
 
 
-.content img{
-  width: 600px;
-  height: 500px;
+.content img {
+    width: 600px;
+    height: 500px;
+}
+
+.appWraperContent {
+    grid-area: c;
+    background-color: #FFFAC8;
 }

@@ -7,21 +7,22 @@ const MyPosts = () => {
         <div>
             My posts
 
- <div>
+            <div>
                 <textarea></textarea>
                 <button>add post</button>
                 <button>remove</button>
             </div>
             <div className={s.posts}>
-                <Post message="hi,how are you?" />
-                <Post message="it's my first post" />
-                <Post message="it's so cool!!" />
-                <Post message="it's so cool!!" />
-                <Post message="it's so cool!!" />
-                <Post message="it's so cool!!" />
-                <Post message="я бусинка!!!!!" />
+                <Post message="hi,how are you?" likesCount="5"/>
+                <Post message="it's my first post" likesCount="2"/>
+                <Post message="it's so cool!!" likesCount="10"/>
+                <Post message="it's so cool!!" likesCount="15"/>
+                <Post message="it's so cool!!" likesCount="88"/>
+                <Post message="it's so cool!!" likesCount="95"/>
+                <Post message="я бусинка!!!!!" likesCount="515"/>
+                <Post message='111111111' likesCount='11111'/>
             </div>
-        </div >
+        </div>
     )
 }
 export default MyPosts;
