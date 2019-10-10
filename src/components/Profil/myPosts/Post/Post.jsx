@@ -9,7 +9,7 @@ const Post = (props) => {
             {props.message}
             <div>
                 <span>{props.likesCount} <img className={s.lol}
-                                              src="https://thumbnail.imgbin.com/7/17/4/imgbin-black-and-white-heart-heart-s-FQYLkZZB5CpihACf0UxkihHRN_t.jpg"
+                                              src="https://cdn4.iconfinder.com/data/icons/like-18/32/459-01-512.png"
                                               alt="" width="10px" height="10px"/> </span>
             </div>
         </div>

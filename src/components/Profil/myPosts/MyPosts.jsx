@@ -2,25 +2,38 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+    let messagesData = [
+        {likesCount: 1, message: "hi,how are you?"},
+        {likesCount: 12223, message: "it's my first post"},
+        {likesCount: 3231, message: "it's so cool!!"},
+        {likesCount: 41, message: "it's so cool!!"},
+        {likesCount: 53, message: "it's so cool!!"},
+        {likesCount: 69, message: "it's so cool!!"},
+        {likesCount: 77, message: "i am DusiNKA!!"},
+        {likesCount: 8, message: "it's so cool!!"},
+    ];
+    let posts = messagesData.map((p) => {
+            return (
+                <Post message={p.message} likesCount={p.likesCount}/>
+            )
+        }
+    )
     return (
-        <div>
-            My posts
+        <div className={s.postBlock}>
+            <h3> My posts</h3>
 
             <div>
-                <textarea></textarea>
-                <button>add post</button>
-                <button>remove</button>
+                <div>
+                    <textarea></textarea>
+                </div>
+                <div>
+                    <button>add post</button>
+                </div>
             </div>
             <div className={s.posts}>
-                <Post message="hi,how are you?" likesCount="5"/>
-                <Post message="it's my first post" likesCount="2"/>
-                <Post message="it's so cool!!" likesCount="10"/>
-                <Post message="it's so cool!!" likesCount="15"/>
-                <Post message="it's so cool!!" likesCount="88"/>
-                <Post message="it's so cool!!" likesCount="95"/>
-                <Post message="я бусинка!!!!!" likesCount="515"/>
-                <Post message='111111111' likesCount='11111'/>
+
+                {posts}
             </div>
         </div>
     )

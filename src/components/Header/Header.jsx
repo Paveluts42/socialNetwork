@@ -4,7 +4,7 @@ import s from "./Header.module.css";
 
 const Header = () => {
     return (<header className={s.header}>
-        <img src="https://fortimelp.fr/273-thickbox_default/formation-javascript-3-jours.jpg"/>
+        <img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png"/>
     </header>)
 };
 
