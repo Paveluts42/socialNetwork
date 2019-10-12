@@ -3,12 +3,16 @@ import s from "./Profil.module.css";
 import MyPosts from "./myPosts/MyPosts";
 import Profileinfo from "./Profileinfo/Profileinfo";
 
-const Profil = () => {
-    return (<div className={s.content}>
-        <Profileinfo/>
-        < MyPosts/>
-    </div>)
+
+const Profil = (props) => {
+
+    return (
+        <div className={s.content}>
+            <Profileinfo/>
+            <MyPosts posts={props.posts}/>
+        </div>)
 }
+
 export default Profil;
 
 
