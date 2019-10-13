@@ -7,7 +7,7 @@ import Message from "./Message/Message";
 const Dialogs = (props) => {
 
 
-    let dialogsElements = props.dialogs.map((dialog) => {
+    let dialogsElements = props.state.dialogsData.map((dialog) => {
             return (
                 <DialogItem name={dialog.name} id={dialog.id}/>
             )
@@ -15,12 +15,18 @@ const Dialogs = (props) => {
     );
 
 
-    let messagesElement = props.message.map((value) => {
+    let messagesElement = props.state.messagesData.map((value) => {
             return (
                 <Message message={value.message} id={value.id}/>
             )
         }
     )
+    let sends=React.createRef()
+    let klic=()=>{
+        let text=sends.current.value;
+        props.klik(text);
+        sends.current.value=""
+    }
     return (
 
         <div className={s.dialogs}>
@@ -29,6 +35,8 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 {messagesElement}
+                <button onClick={klic}>send</button>
+                <textarea ref={sends}></textarea>
             </div>
 
         </div>
