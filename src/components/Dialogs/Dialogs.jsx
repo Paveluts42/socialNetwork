@@ -2,6 +2,8 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./Dialogitem/Dialogsitem";
 import Message from "./Message/Message";
+import {addMessing, updateNewMessText} from "../../redax/state";
+
 
 
 const Dialogs = (props) => {
@@ -24,11 +26,11 @@ const Dialogs = (props) => {
     )
     let newMessageElement = React.createRef()
     let addMess = () => {
-        props.dispatch({type: "ADD-MESS"});
+        props.dispatch(addMessing());
     }
     let onMessChange = () => {
         let text = newMessageElement.current.value;
-        props.dispatch({type: "UPDATE-NEW-MESS-TEXT", newMess: text});
+        props.dispatch(updateNewMessText(text));
     }
     return (
 

@@ -12,7 +12,9 @@ let rerenderEntireTree = (state) => {
                                         dispatch={store.dispatch.bind(store)}/></BrowserRouter>, document.getElementById('root'));
 };
 
+
 store.subscribe(rerenderEntireTree)
 
 rerenderEntireTree(store.getState());
+
 serviceWorker.unregister();
