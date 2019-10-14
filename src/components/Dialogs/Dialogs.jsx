@@ -8,6 +8,7 @@ const Dialogs = (props) => {
 
 
     let dialogsElements = props.state.dialogsData.map((dialog) => {
+
             return (
                 <DialogItem name={dialog.name} id={dialog.id}/>
             )
@@ -21,11 +22,13 @@ const Dialogs = (props) => {
             )
         }
     )
-    let sends=React.createRef()
-    let klic=()=>{
-        let text=sends.current.value;
-        props.klik(text);
-        sends.current.value=""
+    let newMessageElement = React.createRef()
+    let addMess = () => {
+        props.dispatch({type: "ADD-MESS"});
+    }
+    let onMessChange = () => {
+        let text = newMessageElement.current.value;
+        props.dispatch({type: "UPDATE-NEW-MESS-TEXT", newMess: text});
     }
     return (
 
@@ -35,8 +38,9 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 {messagesElement}
-                <button onClick={klic}>send</button>
-                <textarea ref={sends}></textarea>
+
+                <textarea ref={newMessageElement} onChange={onMessChange} value={props.state.newMessageText}/>
+                <button onClick={addMess}>send</button>
             </div>
 
         </div>

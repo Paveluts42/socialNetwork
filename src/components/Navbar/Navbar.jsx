@@ -4,11 +4,12 @@ import {NavLink} from "react-router-dom";
 import Frends from "./Frends/Frends";
 
 const Navbar = (props) => {
-    let frends=props.state.piple.map((value)=>{
-    return(
-        <Frends id={value.id} name={value.name}/>
-    )})
-return(
+    let frends = props.state.piple.map((value) => {
+        return (
+            <Frends id={value.id} name={value.name}/>
+        )
+    })
+    return (
         <nav className={s.nav}>
             <div className={s.item}>
                 <NavLink to="/profile" activeClassName={s.activeLink}> Profile </NavLink>
@@ -30,7 +31,7 @@ return(
                 {frends}
             </div>
         </nav>
-)
+    )
 
 };
 
