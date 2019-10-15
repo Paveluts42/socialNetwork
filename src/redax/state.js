@@ -1,9 +1,9 @@
 "use strict"
 
-const addPost="ADD-POST";
-const appdateNewPost="UPDATE-NEW-POST-TEXT";
-const addMess="ADD-MESS";
-const updateNewMess= "UPDATE-NEW-MESS-TEXT";
+const addPost = "ADD-POST";
+const appdateNewPost = "UPDATE-NEW-POST-TEXT";
+const addMess = "ADD-MESS";
+const updateNewMess = "UPDATE-NEW-MESS-TEXT";
 let store = {
     _state: {
         profilePage: {
@@ -39,7 +39,8 @@ let store = {
                 {id: 6, message: "memes"},
 
 
-            ], newMessageText: ""
+            ],
+            newMessageText: "",
 
         },
         frendsNav: {
@@ -54,8 +55,6 @@ let store = {
     },
 
 
-
-
     getState() {
 
         return this._state;
@@ -63,7 +62,6 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-
 
 
     dispatch(action) {
@@ -95,13 +93,12 @@ let store = {
     },
 };
 
-export const addPostActionCreator=()=>({type:addPost});
-export const updateNewPostText=(text)=>({type: appdateNewPost, newText:text});
+export const addPostActionCreator = () => ({type: addPost});
+export const updateNewPostText = (text) => ({type: appdateNewPost, newText: text});
 
 
-export const addMessing=()=>({type:addMess });
-export const updateNewMessText=(text)=>({type:updateNewMess, newMess: text});
-
+export const addMessing = () => ({type: addMess});
+export const updateNewMessText = (text) => ({type: updateNewMess, newMess: text});
 
 
 window.store = store;

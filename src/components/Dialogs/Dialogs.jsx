@@ -5,7 +5,6 @@ import Message from "./Message/Message";
 import {addMessing, updateNewMessText} from "../../redax/state";
 
 
-
 const Dialogs = (props) => {
 
 
@@ -39,10 +38,17 @@ const Dialogs = (props) => {
                 {dialogsElements}
             </div>
             <div className={s.messages}>
-                {messagesElement}
+                <div> {messagesElement}</div>
+                <div>
+                    <div>
+                        <textarea placeholder={"enter you message"} ref={newMessageElement} onChange={onMessChange} value={props.state.newMessageText}/>
+                    </div>
+                    <div>
+                        <button onClick={addMess}>send</button>
+                    </div>
+                </div>
 
-                <textarea ref={newMessageElement} onChange={onMessChange} value={props.state.newMessageText}/>
-                <button onClick={addMess}>send</button>
+
             </div>
 
         </div>
