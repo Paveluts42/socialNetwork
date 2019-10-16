@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./Dialogitem/Dialogsitem";
 import Message from "./Message/Message";
-import {addMessing, updateNewMessText} from "../../redax/state";
+import {addMessing, updateNewMessText} from"./../../redax/dialogs-reducer"
 
 
 const Dialogs = (props) => {
@@ -23,12 +23,12 @@ const Dialogs = (props) => {
             )
         }
     )
-    let newMessageElement = React.createRef()
+
     let addMess = () => {
         props.dispatch(addMessing());
     }
-    let onMessChange = () => {
-        let text = newMessageElement.current.value;
+    let onMessChange = (change) => {
+        let text = change.target.value;
         props.dispatch(updateNewMessText(text));
     }
     return (
@@ -41,7 +41,8 @@ const Dialogs = (props) => {
                 <div> {messagesElement}</div>
                 <div>
                     <div>
-                        <textarea placeholder={"enter you message"} ref={newMessageElement} onChange={onMessChange} value={props.state.newMessageText}/>
+                        <textarea placeholder={"enter you message"} onChange={onMessChange}
+                                  value={props.state.newMessageText}/>
                     </div>
                     <div>
                         <button onClick={addMess}>send</button>

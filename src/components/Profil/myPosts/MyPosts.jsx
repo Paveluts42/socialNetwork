@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {addPostActionCreator, updateNewPostText} from "../../../redax/state";
+import {addPostActionCreator, updateNewPostText} from "../../../redax/profile-reducer";
 
 
 
@@ -12,15 +12,15 @@ const MyPosts = (props) => {
             return (<Post message={value.message} likesCount={value.likesCount}/>)
         }
     )
-    let newPostElement = React.createRef();
+
     let addPost = () => {
 
         props.dispatch(addPostActionCreator());
 
     }
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
+    let onPostChange = (change) => {
+        let text = change.target.value;
         let action=updateNewPostText(text)
         props.dispatch(action);
     }
@@ -31,7 +31,7 @@ const MyPosts = (props) => {
 
             <div>
                 <div>
-                    <textarea placeholder={"enter you post"} ref={newPostElement} value={props.newPostText} onChange={onPostChange}/>
+                    <textarea placeholder={"enter you post"} value={props.newPostText} onChange={onPostChange}/>
                 </div>
                 <div>
                     <button onClick={addPost}>add post</button>

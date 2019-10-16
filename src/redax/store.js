@@ -1,9 +1,10 @@
 "use strict"
 
-const addPost = "ADD-POST";
-const appdateNewPost = "UPDATE-NEW-POST-TEXT";
-const addMess = "ADD-MESS";
-const updateNewMess = "UPDATE-NEW-MESS-TEXT";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import frendsNavReducer from "./frendsNav-reducer";
+
+
 let store = {
     _state: {
         profilePage: {
@@ -65,41 +66,18 @@ let store = {
 
 
     dispatch(action) {
-        if (action.type === addPost) {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0,
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = "";
-            this._callSubscriber(this._state);
-        } else if (action.type === appdateNewPost) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        } else if (action.type === addMess) {
-            let newMess = {
-                id: 1,
-                message: this._state.dialogsPage.newMessageText,
-            }
-            this._state.dialogsPage.messagesData.push(newMess);
-            this._state.dialogsPage.newMessageText = "";
-            this._callSubscriber(this._state);
-        } else if (action.type === updateNewMess) {
-            this._state.dialogsPage.newMessageText = action.newMess;
-            this._callSubscriber(this._state)
-        }
 
-    },
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.frendsNav = frendsNavReducer(this._state.frendsNav, action);
+
+        this._callSubscriber(this._state)
+    }
+
+
 };
 
-export const addPostActionCreator = () => ({type: addPost});
-export const updateNewPostText = (text) => ({type: appdateNewPost, newText: text});
 
 
-export const addMessing = () => ({type: addMess});
-export const updateNewMessText = (text) => ({type: updateNewMess, newMess: text});
 
-
-window.store = store;
 export default store
