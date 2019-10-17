@@ -1,12 +1,13 @@
 import React from "react";
 import s from "./Navbar.module.css";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Frends from "./Frends/Frends";
 
 const Navbar = (props) => {
-    let frends = props.state.piple.map((value) => {
+
+    let frends = props.id.map((value) => {
         return (
-            <Frends id={value.id} name={value.name}/>
+            <Frends id={value.id} name={value.name} />
         )
     })
     return (

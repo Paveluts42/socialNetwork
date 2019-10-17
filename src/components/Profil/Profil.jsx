@@ -10,7 +10,7 @@ const Profil = (props) => {
     return (
         <div className={s.content}>
             <Profileinfo/>
-            <MyPostsContener store={props.store} dispatch={props.dispatch} />
+            <MyPostsContener />
         </div>)
 }
 
