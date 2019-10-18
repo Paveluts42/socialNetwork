@@ -2,17 +2,15 @@ import React from "react";
 import s from "./Profil.module.css";
 
 import Profileinfo from "./Profileinfo/Profileinfo";
-import MyPostsContener from "./myPosts/MyPostContener";
+import SuperMyPostsContener from "./myPosts/MyPostContener";
 
-
-const Profil = (props) => {
-
-    return (
-        <div className={s.content}>
-            <Profileinfo/>
-            <MyPostsContener />
-        </div>)
-}
+const Profil = () => {
+  return (
+    <div className={s.content}>
+      <Profileinfo />
+      <SuperMyPostsContener />
+    </div>
+  );
+};
 
 export default Profil;
-

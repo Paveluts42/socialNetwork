@@ -1,10 +1,10 @@
 import React from "react"
 import s from "./Profileinfo.module.css"
-const Profileinfo = (props) => {
+const Profileinfo = () => {
     return (
         <div>
             <div>
-                <img src="http://papers.co/wallpaper/papers.co-an22-sunset-yellow-bird-minimal-29-wallpaper.jpg"/>
+                <img src="http://papers.co/wallpaper/papers.co-an22-sunset-yellow-bird-minimal-29-wallpaper.jpg" />
             </div>
             <div className={s.descriptionBlock}>
                 ava+description
