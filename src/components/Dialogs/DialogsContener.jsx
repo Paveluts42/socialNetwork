@@ -20,33 +20,9 @@ let mapDispatchToProps = dispatch => {
   };
 };
 
-const SuperDialogsContener = connect(
+const DialogsContener = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Dialogs);
 
-// const DialogsContener = () => {
-//   return (
-//     <StoreContext.Consumer>
-//       {store => {
-//         let addMess = () => {
-//           store.dispatch(addMessing());
-//         };
-//         let messChange = change => {
-//           let action = updateNewMessText(change);
-//           store.dispatch(action);
-//         };
-//         return (
-//           <Dialogs
-//             updateNewMessText={messChange}
-//             addMessing={addMess}
-//             dialogsData={store.getState().dialogsPage.dialogsData}
-//             messagesData={store.getState().dialogsPage.messagesData}
-//             newMessageText={store.getState().dialogsPage.newMessageText}
-//           />
-//         );
-//       }}
-//     </StoreContext.Consumer>
-//   );
-// };
-export default SuperDialogsContener;
+export default DialogsContener;

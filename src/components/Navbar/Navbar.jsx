@@ -4,9 +4,8 @@ import { NavLink } from "react-router-dom";
 import Frends from "./Frends/Frends";
 
 const Navbar = props => {
-  debugger;
-  let frends = props.frendsNav.piple.map(value => {
-    return <Frends id={value.id} name={value.name} />;
+  let frends = props.frendsNav.piple.map(f => {
+    return <Frends id={f.id} key={f.id} name={f.name} />;
   });
   return (
     <nav className={s.nav}>

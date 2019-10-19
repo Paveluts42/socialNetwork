@@ -5,5 +5,5 @@ let mapStateToProps = state => {
   return { frendsNav: state.frendsNav };
 };
 
-const SuperNavbarContener = connect(mapStateToProps)(Navbar);
-export default SuperNavbarContener;
+const NavbarContener = connect(mapStateToProps)(Navbar);
+export default NavbarContener;
