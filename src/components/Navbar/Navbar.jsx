@@ -11,39 +11,39 @@ const Navbar = props => {
     <nav className={s.nav}>
       <div className={s.item}>
         <NavLink to="/profile" activeClassName={s.activeLink}>
-          {" "}
-          Profile{" "}
+          Profile
         </NavLink>
       </div>
       <div className={s.item}>
         <NavLink to="/dialogs" activeClassName={s.activeLink}>
-          Message{" "}
+          Message
         </NavLink>
       </div>
       <div className={s.item}>
         <NavLink to="/news" activeClassName={s.activeLink}>
-          {" "}
           News
         </NavLink>
       </div>
       <div className={s.item}>
         <NavLink to="/music" activeClassName={s.activeLink}>
-          {" "}
           Music
         </NavLink>
       </div>
       <div className={s.item}>
         <NavLink to="/settings" activeClassName={s.activeLink}>
-          {" "}
-          Settings{" "}
+          Settings
         </NavLink>
       </div>
       <div className={s.frends}>
         <NavLink to="/frends" activeClassName={s.activeLink}>
-          {" "}
           Frends
         </NavLink>
         {frends}
+      </div>
+      <div className={s.item}>
+        <NavLink to="/users" activeClassName={s.activeLink}>
+          Users
+        </NavLink>
       </div>
     </nav>
   );
