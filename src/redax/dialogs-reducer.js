@@ -21,7 +21,6 @@ let inisialState = {
 };
 let idAdd = 7;
 const dialogsReducer = (state = inisialState, action) => {
-  debugger;
   switch (action.type) {
     case updateNewMess:
       return { ...state, newMessageText: action.newMess };
