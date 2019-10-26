@@ -13,7 +13,7 @@ let Users = (props) => {
     return (<div>
         <div>
             {pages.map(p => {
-                return <span className={props.currentPage === p ? s.selectedPage : ""} onClick={(e) => { props.onPageChanged(p) }}>{p + ".."}</span>
+                return <span key={props.key} className={props.currentPage === p ? s.selectedPage : ""} onClick={(e) => { props.onPageChanged(p) }}>{p + ".."}</span>
             })}
 
         </div>
@@ -27,7 +27,7 @@ let Users = (props) => {
                         {u.followed ? (
                             <button
                                 onClick={() => {
-                                    props.unfollow(u.id);
+                                    props.unFollow(u.id);
                                 }}
                             >
                                 UnFollow
@@ -47,6 +47,7 @@ let Users = (props) => {
                     <span>
                         <div>{u.name}</div>
                         <div>{u.status}</div>
+                        <div>{u.id}</div>
                     </span>
                     <span>
                         <div>{"u.location.city"}</div>

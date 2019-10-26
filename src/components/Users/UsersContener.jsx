@@ -1,30 +1,38 @@
 
 import { connect } from "react-redux";
-import { followAC, unFollowAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC } from "../../redax/users-reducer";
+import { follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching } from "../../redax/users-reducer";
 import * as axios from "axios";
 import Users from "./Users";
 import React from "react";
 
+import Preloader from "../common/preloader"
 
 
-class UsersAPIComponent extends React.Component {
+
+class UsersComponent extends React.Component {
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
-
+    this.props.setIsFeaching(true);
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}&key=${this.props.id}`).then(response => {
+      this.props.setIsFeaching(false);
       this.props.setUsers(response.data.items)
     })
   }
   onPageChanged = (pageNumber) => {
+    this.props.setIsFeaching(true);
+
     this.props.setCurrentPage(pageNumber);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}&key=${this.props.id}`).then(response => {
+      this.props.setIsFeaching(false);
 
       this.props.setUsers(response.data.items)
       this.props.setTotalUsersCount(response.data.totalCount)
     })
   }
   render() {
-    return (
-      <Users totalUsetsCount={this.props.totalUsetsCount} pageSize={this.props.pageSize} currentPage={this.props.currentPage} users={this.props.users} unfollow={this.props.unfollow} follow={this.props.follow} onPageChanged={this.onPageChanged} />
+    return (<>
+      {this.props.isFeaching ? <Preloader /> : null}
+      <Users isFeaching={this.props.isFeaching} totalUsetsCount={this.props.totalUsetsCount} key={this.props.id} pageSize={this.props.pageSize} currentPage={this.props.currentPage} users={this.props.users} unFollow={this.props.unFollow} follow={this.props.follow} onPageChanged={this.onPageChanged} />
+    </>
     )
   }
 }
@@ -36,30 +44,15 @@ let mapStateToProps = state => {
     pageSize: state.usersPage.pageSize,
     totalUsetsCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
+    isFeaching: state.usersPage.isFeaching,
   };
 };
-let mapDispatchToProps = dispatch => {
-  return {
-    follow: userId => {
-      dispatch(followAC(userId));
-    },
-    unfollow: userId => {
-      dispatch(unFollowAC(userId));
-    },
-    setUsers: users => {
-      dispatch(setUsersAC(users));
-    },
-    setCurrentPage: pageNumber => {
-      dispatch(setCurrentPageAC(pageNumber))
 
-    },
-    setTotalUsersCount: totalCount => {
-      dispatch(setTotalUsersCountAC(totalCount))
-    }
-  };
-};
 const UsersContener = connect(
   mapStateToProps,
-  mapDispatchToProps
-)(UsersAPIComponent);
+  {
+    follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching,
+  }
+
+)(UsersComponent);
 export default UsersContener;
