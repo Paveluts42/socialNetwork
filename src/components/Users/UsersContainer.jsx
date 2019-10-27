@@ -12,17 +12,21 @@ import Preloader from "../common/preloader"
 class UsersComponent extends React.Component {
   componentDidMount() {
     this.props.setIsFeaching(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}&key=${this.props.id}`).then(response => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
       this.props.setIsFeaching(false);
-      this.props.setUsers(response.data.items)
+
+      this.props.setUsers(response.data.items);
+
+      this.props.setTotalUsersCount(response.data.totalCount);
     })
   }
   onPageChanged = (pageNumber) => {
     this.props.setIsFeaching(true);
 
     this.props.setCurrentPage(pageNumber);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}&key=${this.props.id}`).then(response => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
       this.props.setIsFeaching(false);
+
 
       this.props.setUsers(response.data.items)
       this.props.setTotalUsersCount(response.data.totalCount)
@@ -31,7 +35,7 @@ class UsersComponent extends React.Component {
   render() {
     return (<>
       {this.props.isFeaching ? <Preloader /> : null}
-      <Users isFeaching={this.props.isFeaching} totalUsetsCount={this.props.totalUsetsCount} key={this.props.id} pageSize={this.props.pageSize} currentPage={this.props.currentPage} users={this.props.users} unFollow={this.props.unFollow} follow={this.props.follow} onPageChanged={this.onPageChanged} />
+      <Users isFeaching={this.props.isFeaching} totalUsetsCount={this.props.totalUsetsCount} pageSize={this.props.pageSize} currentPage={this.props.currentPage} users={this.props.users} unFollow={this.props.unFollow} follow={this.props.follow} onPageChanged={this.onPageChanged} />
     </>
     )
   }
@@ -48,11 +52,11 @@ let mapStateToProps = state => {
   };
 };
 
-const UsersContener = connect(
+const UsersContainer = connect(
   mapStateToProps,
   {
     follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching,
   }
 
 )(UsersComponent);
-export default UsersContener;
+export default UsersContainer;

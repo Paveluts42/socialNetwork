@@ -1,5 +1,6 @@
 const addPost = "ADD-POST";
 const appdateNewPost = "UPDATE-NEW-POST-TEXT";
+const SETUSERPROFILE = "SETUSERPROFILE";
 let initialState = {
   posts: [
     { id: 1, likesCount: 1, message: "hi,how are you?" },
@@ -13,7 +14,8 @@ let initialState = {
     { id: 9, likesCount: 444, message: "i very happy!!" },
     { id: 10, likesCount: 666, message: "i very happy!!" }
   ],
-  newPostText: ""
+  newPostText: "",
+  profile: null,
 };
 let idAdd = 11;
 const profileReducer = (state = initialState, action) => {
@@ -30,12 +32,17 @@ const profileReducer = (state = initialState, action) => {
           { id: idAdd, message: state.newPostText, likesCount: 0 }
         ]
       };
+    case SETUSERPROFILE: {
+      return { ...state, profile: action.profile }
+    }
+
     default:
       return state;
   }
 };
 
 export const addPostActionCreator = () => ({ type: addPost });
+export const setUserProfile = (profile) => ({ type: SETUSERPROFILE, profile });
 export const updateNewPostText = text => ({
   type: appdateNewPost,
   newText: text

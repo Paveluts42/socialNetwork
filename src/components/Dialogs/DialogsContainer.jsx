@@ -1,5 +1,5 @@
 import Dialogs from "./Dialogs";
-import { addMessing, updateNewMessText } from "./../../redax/dialogs-reducer";
+import { addMessing, updateNewMessText } from "../../redax/dialogs-reducer";
 import { connect } from "react-redux";
 
 let mapStateToProps = state => {
@@ -20,9 +20,9 @@ let mapDispatchToProps = dispatch => {
   };
 };
 
-const DialogsContener = connect(
+const DialogsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Dialogs);
 
-export default DialogsContener;
+export default DialogsContainer;
