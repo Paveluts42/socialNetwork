@@ -6,6 +6,17 @@
 
 .header {
     grid-area: h;
-    background-color: #23593B;
+    background-color: #7FF0FF;
     border-radius: 30px;
+}
+
+.loginBlock{
+    float:right;
+width: 200px;
+
+}
+.link{
+    text-decoration: none;
+    color: tan;
+  
 }

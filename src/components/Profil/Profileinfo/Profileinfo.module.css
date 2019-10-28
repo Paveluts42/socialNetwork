@@ -1,3 +1,7 @@
 .descriptionBlock{
     padding: 10px;
 }
+.descriptionBlock img.profilPhoto{
+    width: 200px;
+    height: 150px;
+}

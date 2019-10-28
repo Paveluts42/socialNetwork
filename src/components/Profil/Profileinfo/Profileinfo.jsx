@@ -6,15 +6,17 @@ const Profileinfo = (props) => {
     if (!props.profile) {
         return <Preloader />
     }
-    debugger
     return (
         <div>
             <div>
-                <img src="http://papers.co/wallpaper/papers.co-an22-sunset-yellow-bird-minimal-29-wallpaper.jpg" />
+
             </div>
             <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.large} />
-                ava+description
+                <img className={s.profilPhoto} src={props.profile.photos.large} />
+                <h4>{props.profile.fullName}</h4>
+
+                <h1>{props.profile.aboutMe}</h1>
+                <h6>{props.profile.contacts.vk}</h6>
             </div>
         </div>
     )
