@@ -12,7 +12,7 @@ import Preloader from "../common/preloader"
 class UsersComponent extends React.Component {
   componentDidMount() {
     this.props.setIsFeaching(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, { withCredentials: true }).then(response => {
       this.props.setIsFeaching(false);
 
       this.props.setUsers(response.data.items);
@@ -24,7 +24,7 @@ class UsersComponent extends React.Component {
     this.props.setIsFeaching(true);
 
     this.props.setCurrentPage(pageNumber);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, { withCredentials: true }).then(response => {
       this.props.setIsFeaching(false);
 
 

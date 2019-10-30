@@ -2,6 +2,7 @@ import React from 'react'
 import s from "./UsersStyle.module.css";
 import userImg from "../../content/img projekt/016f722ab179a9441086e259856049b0.jpg";
 import { NavLink } from "react-router-dom"
+import * as axios from "axios";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsetsCount / props.pageSize);
@@ -26,22 +27,20 @@ let Users = (props) => {
                         </NavLink>
                         <div>
                             {u.followed ? (
-                                <button
-                                    onClick={() => {
-                                        props.unFollow(u.id);
-                                    }}
-                                >
-                                    UnFollow
-                  </button>
-                            ) : (
-                                    <button
-                                        onClick={() => {
-                                            props.follow(u.id);
-                                        }}
-                                    >
-                                        Follow
-                  </button>
-                                )}
+                                <button onClick={() => {
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, { withCredentials: true, headers: { "API-KEY": "ebc4aac9-5e24-4ba3-862a-6d9bb0f095b7" } }).then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            props.unFollow(u.id)
+                                        }
+                                    });
+                                }}>UnFollow</button>)
+                                : (<button onClick={() => {
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, { withCredentials: true, headers: { "API-KEY": "ebc4aac9-5e24-4ba3-862a-6d9bb0f095b7" } }).then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            props.follow(u.id)
+                                        }
+                                    });
+                                }}>Follow</button>)}
                         </div>
                     </div>
                 </span>
@@ -57,8 +56,9 @@ let Users = (props) => {
                     </span>
                 </span>
             </div>
-        ))}
-    </div>)
+        ))
+        }
+    </div >)
 
 }
 
