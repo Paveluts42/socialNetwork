@@ -1,7 +1,6 @@
 
 import { connect } from "react-redux";
 import { follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching } from "../../redax/users-reducer";
-import * as axios from "axios";
 import Users from "./Users";
 import React from "react";
 
@@ -25,7 +24,7 @@ class UsersComponent extends React.Component {
     this.props.setIsFeaching(true);
 
     this.props.setCurrentPage(pageNumber);
-    getUsers(this.props.pageNumber, this.props.pageSize).then(data => {
+    getUsers(pageNumber, this.props.pageSize).then(data => {
 
       this.props.setIsFeaching(false);
 
