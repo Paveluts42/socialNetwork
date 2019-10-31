@@ -36,7 +36,7 @@ class UsersComponent extends React.Component {
   render() {
     return (<>
       {this.props.isFeaching ? <Preloader /> : null}
-      <Users isFeaching={this.props.isFeaching} totalUsetsCount={this.props.totalUsetsCount} pageSize={this.props.pageSize} currentPage={this.props.currentPage} users={this.props.users} unFollow={this.props.unFollow} follow={this.props.follow} onPageChanged={this.onPageChanged} />
+      <Users key={this.props.unFollow.id} isFeaching={this.props.isFeaching} totalUsetsCount={this.props.totalUsetsCount} pageSize={this.props.pageSize} currentPage={this.props.currentPage} users={this.props.users} unFollow={this.props.unFollow} follow={this.props.follow} onPageChanged={this.onPageChanged} />
     </>
     )
   }
