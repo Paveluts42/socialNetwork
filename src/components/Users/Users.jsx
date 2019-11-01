@@ -9,8 +9,8 @@ let Users = (props) => {
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
-    }
 
+    }
     return (<div key={props.key}>
         <div>
             {pages.map(p => {
@@ -19,19 +19,20 @@ let Users = (props) => {
 
         </div>
         {props.users.map(u => (
-            <div >
+            <div>
                 <span>
                     <div>
+
                         <NavLink to={"/profile/" + u.id}>
                             <img src={u.photos.small != null ? u.photos.small : userImg} className={s.usersPhoto} />
                         </NavLink>
                         <div>
                             {u.followed ? (
-                                <button onClick={() => {
-                                    delitePost(u.id, props = props.unFollow)
+                                <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                    delitePost(u.id, props)
                                 }}>UnFollow</button>)
-                                : (<button onClick={() => {
-                                    Post(u.id, props = props.follow)
+                                : (<button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                    Post(u.id, props)
 
                                 }}>Follow</button>)}
                         </div>

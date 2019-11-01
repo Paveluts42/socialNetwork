@@ -1,6 +1,6 @@
 
 import { connect } from "react-redux";
-import { follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching } from "../../redax/users-reducer";
+import { follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching, setfollowingInProgress } from "../../redax/users-reducer";
 import Users from "./Users";
 import React from "react";
 
@@ -36,7 +36,17 @@ class UsersComponent extends React.Component {
   render() {
     return (<>
       {this.props.isFeaching ? <Preloader /> : null}
-      <Users key={this.props.unFollow.id} isFeaching={this.props.isFeaching} totalUsetsCount={this.props.totalUsetsCount} pageSize={this.props.pageSize} currentPage={this.props.currentPage} users={this.props.users} unFollow={this.props.unFollow} follow={this.props.follow} onPageChanged={this.onPageChanged} />
+      <Users key={this.props.follow.id}
+        setfollowingInProgress={this.props.setfollowingInProgress}
+        isFeaching={this.props.isFeaching}
+        totalUsetsCount={this.props.totalUsetsCount}
+        pageSize={this.props.pageSize}
+        currentPage={this.props.currentPage}
+        users={this.props.users}
+        unFollow={this.props.unFollow}
+        follow={this.props.follow}
+        onPageChanged={this.onPageChanged}
+        followingInProgress={this.props.followingInProgress} />
     </>
     )
   }
@@ -50,13 +60,14 @@ let mapStateToProps = state => {
     totalUsetsCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFeaching: state.usersPage.isFeaching,
+    followingInProgress: state.usersPage.followingInProgress
   };
 };
 
 const UsersContainer = connect(
   mapStateToProps,
   {
-    follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching,
+    follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching, setfollowingInProgress,
   }
 
 )(UsersComponent);

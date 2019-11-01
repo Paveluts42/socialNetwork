@@ -1,9 +1,10 @@
 const FOLLOW = "FOLLOW";
-const UNFOLLOW = "UNFOLLOW";
-const SETUSER = "SETUSER";
-const SETCURRENTPAGE = "SETCURRENTPAGE";
-const SETTOTALUSERSCOUNT = "SETTOTALUSERSCOUNT";
-const TOGGLEISFEACHING = "TOGGLEISFEACHING";
+const UN_FOLLOW = "UN_FOLLOW";
+const SET_USER = "SET_USER";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
+const TOGGLE_IS_FEACHING = "TOGGLE_IS_FEACHING";
+const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS";
 
 let initialState = {
   users: [
@@ -11,7 +12,8 @@ let initialState = {
   ], pageSize: 20,
   totalUsersCount: 30,
   currentPage: 1,
-  isFeaching: false,
+  isFeaching: true,
+  followingInProgress: [3],
 
 };
 
@@ -27,7 +29,7 @@ const usersReducers = (state = initialState, action) => {
           return u;
         })
       };
-    case UNFOLLOW:
+    case UN_FOLLOW:
       return {
         ...state,
         users: state.users.map(u => {
@@ -37,23 +39,33 @@ const usersReducers = (state = initialState, action) => {
           return u;
         })
       };
-    case SETUSER:
+
+    case SET_USER:
       return { ...state, users: action.user };
-    case SETCURRENTPAGE:
+    case SET_CURRENT_PAGE:
       return { ...state, currentPage: action.currentPage };
-    case SETTOTALUSERSCOUNT:
+    case SET_TOTAL_USERS_COUNT:
       return { ...state, totalUsersCount: action.totalUsersCount };
-    case TOGGLEISFEACHING:
+    case TOGGLE_IS_FEACHING:
       return { ...state, isFeaching: action.isFeaching };
+    case TOGGLE_IS_FOLLOWING_PROGRESS:
+      return {
+        ...state,
+        followingInProgress: action.isFeaching ?
+          [...state.followingInProgress, action.userId]
+          :
+          state.followingInProgress.filter(id => id != action.userId)
+      };
     default:
       return state;
   }
 };
 
 export const follow = userId => ({ type: FOLLOW, userId });
-export const unFollow = userId => ({ type: UNFOLLOW, userId });
-export const setUsers = user => ({ type: SETUSER, user });
-export const setCurrentPage = currentPage => ({ type: SETCURRENTPAGE, currentPage })
-export const setTotalUsersCount = totalUsersCount => ({ type: SETTOTALUSERSCOUNT, totalUsersCount })
-export const setIsFeaching = isFeaching => ({ type: TOGGLEISFEACHING, isFeaching })
+export const unFollow = userId => ({ type: UN_FOLLOW, userId });
+export const setUsers = user => ({ type: SET_USER, user });
+export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentPage })
+export const setTotalUsersCount = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount })
+export const setIsFeaching = isFeaching => ({ type: TOGGLE_IS_FEACHING, isFeaching })
+export const setfollowingInProgress = (isFeaching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFeaching, userId })
 export default usersReducers;
