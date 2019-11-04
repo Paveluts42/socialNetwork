@@ -2,7 +2,7 @@ import * as axios from "axios";
 const key = { withCredentials: true, headers: { "API-KEY": "ebc4aac9-5e24-4ba3-862a-6d9bb0f095b7" } };
 
 
-export const getUsers = (currentPage = 1, pageSize = 10) => {
+export const getUsersChange = (currentPage = 1, pageSize = 10) => {
     return (axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,
         {
             withCredentials: true
@@ -11,7 +11,7 @@ export const getUsers = (currentPage = 1, pageSize = 10) => {
     )
 }
 
-export const Post = (id, props) => {
+export const post = (id, props) => {
 
 
     props.setfollowingInProgress(true, id)

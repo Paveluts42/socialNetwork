@@ -1,3 +1,4 @@
+import { getUsersChange } from "../api/Api"
 const FOLLOW = "FOLLOW";
 const UN_FOLLOW = "UN_FOLLOW";
 const SET_USER = "SET_USER";
@@ -60,7 +61,7 @@ const usersReducers = (state = initialState, action) => {
       return state;
   }
 };
-
+debugger
 export const follow = userId => ({ type: FOLLOW, userId });
 export const unFollow = userId => ({ type: UN_FOLLOW, userId });
 export const setUsers = user => ({ type: SET_USER, user });
@@ -68,4 +69,15 @@ export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentP
 export const setTotalUsersCount = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount })
 export const setIsFeaching = isFeaching => ({ type: TOGGLE_IS_FEACHING, isFeaching })
 export const setfollowingInProgress = (isFeaching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFeaching, userId })
+export const getUsers = (currentPage, pageSize) => {
+  return ((dispatch) => {
+    dispatch(setIsFeaching(false));
+    getUsersChange(currentPage, pageSize).then(data => {
+      dispatch(setIsFeaching(false));
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUsersCount(data.totalCount))
+    })
+  }
+  )
+}
 export default usersReducers;

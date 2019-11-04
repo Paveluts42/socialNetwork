@@ -2,7 +2,7 @@ import React from 'react'
 import s from "./UsersStyle.module.css";
 import userImg from "../../content/img projekt/016f722ab179a9441086e259856049b0.jpg";
 import { NavLink } from "react-router-dom"
-import { Post, delitePost } from '../../api/Api';
+import { post, delitePost } from '../../api/Api';
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsetsCount / props.pageSize);
@@ -32,7 +32,7 @@ let Users = (props) => {
                                     delitePost(u.id, props)
                                 }}>UnFollow</button>)
                                 : (<button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                    Post(u.id, props)
+                                    post(u.id, props)
 
                                 }}>Follow</button>)}
                         </div>

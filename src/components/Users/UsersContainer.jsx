@@ -1,42 +1,41 @@
 
 import { connect } from "react-redux";
-import { follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching, setfollowingInProgress } from "../../redax/users-reducer";
+import { follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching, setfollowingInProgress, getUsers } from "../../redax/users-reducer";
 import Users from "./Users";
 import React from "react";
-
-import Preloader from "../common/preloader"
-import { getUsers } from "../../api/Api";
-
+import Preloader from "../common/preloader";
+import { getUsersChange } from "../../api/Api"
 
 
 class UsersComponent extends React.Component {
   componentDidMount() {
-    this.props.setIsFeaching(true);
-    getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-      this.props.setIsFeaching(false);
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
+    // this.props.setIsFeaching(true);
+    // getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+    //   this.props.setIsFeaching(false);
 
-      this.props.setUsers(data.items);
+    //   this.props.setUsers(data.items);
 
-      this.props.setTotalUsersCount(data.totalCount);
-    })
+    //   this.props.setTotalUsersCount(data.totalCount);
+    // })
   }
   onPageChanged = (pageNumber) => {
     this.props.setIsFeaching(true);
 
     this.props.setCurrentPage(pageNumber);
-    getUsers(pageNumber, this.props.pageSize).then(data => {
+    getUsersChange(pageNumber, this.props.pageSize).then(data => {
 
       this.props.setIsFeaching(false);
-
-
       this.props.setUsers(data.items)
       this.props.setTotalUsersCount(data.totalCount)
     })
   }
+
+
   render() {
     return (<>
       {this.props.isFeaching ? <Preloader /> : null}
-      <Users key={this.props.follow.id}
+      < Users key={this.props.follow.id}
         setfollowingInProgress={this.props.setfollowingInProgress}
         isFeaching={this.props.isFeaching}
         totalUsetsCount={this.props.totalUsetsCount}
@@ -67,7 +66,7 @@ let mapStateToProps = state => {
 const UsersContainer = connect(
   mapStateToProps,
   {
-    follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching, setfollowingInProgress,
+    follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFeaching, setfollowingInProgress, getUsers
   }
 
 )(UsersComponent);
