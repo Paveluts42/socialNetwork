@@ -1,3 +1,5 @@
+import { ProfileSetAPI } from "../api/Api";
+
 const addPost = "ADD-POST";
 const appdateNewPost = "UPDATE-NEW-POST-TEXT";
 const SETUSERPROFILE = "SETUSERPROFILE";
@@ -47,5 +49,17 @@ export const updateNewPostText = text => ({
   type: appdateNewPost,
   newText: text
 });
+export const nowUser = (userId) => {
+  return (dispatch) => {
+    if (!userId) {
+      userId = 5007;
+    }
+    dispatch(userId)
+
+    ProfileSetAPI.profilSetUser(userId, setUserProfile)
+
+  }
+}
+
 
 export default profileReducer;
