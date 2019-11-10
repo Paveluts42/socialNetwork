@@ -52,7 +52,7 @@ export const updateNewPostText = text => ({
 export const nowUser = (userId) => {
   return (dispatch) => {
     if (!userId) {
-      userId = 5007;
+      userId = 5112;
     }
     dispatch(userId)
 

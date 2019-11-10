@@ -4,7 +4,8 @@ import { follow, unFollow, setCurrentPage, setfollowingInProgress, getUsers } fr
 import Users from "./Users";
 import React from "react";
 import Preloader from "../common/preloader";
-
+import { Redirect } from "react-router-dom"
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 class UsersComponent extends React.Component {
   componentDidMount() {
@@ -19,6 +20,9 @@ class UsersComponent extends React.Component {
 
 
   render() {
+    if (!this.props.isAuth) {
+      return <Redirect to={"/login"} />
+    }
     return (<>
       {this.props.isFeaching ? <Preloader /> : null}
       < Users
@@ -36,7 +40,7 @@ class UsersComponent extends React.Component {
     )
   }
 }
-
+let AuthUsersRedirect = withAuthRedirect(UsersComponent)
 
 let mapStateToProps = state => {
   return {
@@ -45,7 +49,8 @@ let mapStateToProps = state => {
     totalUsetsCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFeaching: state.usersPage.isFeaching,
-    followingInProgress: state.usersPage.followingInProgress
+    followingInProgress: state.usersPage.followingInProgress,
+    isAuth: state.auth.isAuth
   };
 };
 
@@ -55,5 +60,5 @@ const UsersContainer = connect(
     follow, unFollow, setCurrentPage, setfollowingInProgress, getUsers,
   }
 
-)(UsersComponent);
+)(AuthUsersRedirect);
 export default UsersContainer;
