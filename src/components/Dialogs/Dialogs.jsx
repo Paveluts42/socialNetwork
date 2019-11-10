@@ -36,7 +36,7 @@ const Dialogs = props => {
             />
           </div>
           <div>
-            <button onClick={onAddMess}>send</button>
+            <button className={s.button} onClick={onAddMess}><svg className={s.button__svg}> <rect className={s.button__rect}></rect></svg>send</button>
           </div>
         </div>
       </div>

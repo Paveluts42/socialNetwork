@@ -1,6 +1,8 @@
 import React from "react"
 import s from "./Profileinfo.module.css"
 import Preloader from "../../common/preloader"
+import ProfileStatus from "./ProfileStatus"
+import UserPhoto from "../../../content/img projekt/016f722ab179a9441086e259856049b0.jpg"
 const Profileinfo = (props) => {
 
     if (!props.profile) {
@@ -12,13 +14,15 @@ const Profileinfo = (props) => {
 
             </div>
             <div className={s.descriptionBlock}>
-                <img className={s.profilPhoto} src={props.profile.photos.large} />
-                <h4>{props.profile.fullName}</h4>
+                <img className={s.profilPhoto} src={props.profile.photos.large != null ? props.profile.photos.large : UserPhoto} />
 
-                <h1>{props.profile.aboutMe}</h1>
-                <h6>{props.profile.contacts.vk}</h6>
+                <h4 className="globolColorText">{props.profile.fullName}</h4>
+                <ProfileStatus status={"hello my frends"} />
+                <h1 className="globolColorText">{props.profile.aboutMe}</h1>
+                <h6 className="globolColorText">{props.profile.contacts.vk}</h6>
             </div>
         </div>
     )
 }
+
 export default Profileinfo

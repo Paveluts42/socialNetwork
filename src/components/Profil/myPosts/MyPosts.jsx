@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 
 const MyPosts = props => {
   let post = props.posts.map(p => {
-    return <Post message={p.message} key={p.id} likesCount={p.likesCount} />;
+    return <Post className="globolColorText" message={p.message} key={p.id} likesCount={p.likesCount} />;
   });
 
   let onAddPost = () => {
@@ -18,7 +18,7 @@ const MyPosts = props => {
 
   return (
     <div className={s.postBlock}>
-      <h3> My posts</h3>
+      <h3 className="globolColorText"> My posts</h3>
 
       <div>
         <div>
@@ -28,8 +28,8 @@ const MyPosts = props => {
             onChange={onPostChange}
           />
         </div>
-        <div>
-          <button onClick={onAddPost}>add post</button>
+        <div className={s.buttonArea}>
+          <button onClick={onAddPost} className={s.button}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>add post</button>
         </div>
       </div>
       <div className={s.posts}>{post}</div>

@@ -1,20 +1,20 @@
 
 .nav {
     grid-area: n;
-    background-color: #C48754;
+    background-color:yellow;
     padding: 20px;
     border-radius: 1px;
 }
 
 .item a {
-    color: white;
+    color: #00bfff;
     text-decoration: none;
     text-align: center;
   margin-top: 10px;
 }
 .item a.activeLink{
-    color: gold;
-    width: 10000px;
+    color: #00bfff;
+  
 
 }
 .frends{
@@ -23,11 +23,11 @@
 }
 .frends a{
     text-decoration: none;
-    color:white;
+    color:#00bfff;
 
 }
 .frends a.activeLink {
-    color: gold;
+    color: #00bfff;
 
 }
 .gif{
