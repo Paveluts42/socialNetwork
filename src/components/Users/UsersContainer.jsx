@@ -6,6 +6,7 @@ import React from "react";
 import Preloader from "../common/preloader";
 import { Redirect } from "react-router-dom"
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class UsersComponent extends React.Component {
   componentDidMount() {
@@ -40,8 +41,6 @@ class UsersComponent extends React.Component {
     )
   }
 }
-let AuthUsersRedirect = withAuthRedirect(UsersComponent)
-
 let mapStateToProps = state => {
   return {
     users: state.usersPage.users,
@@ -54,11 +53,11 @@ let mapStateToProps = state => {
   };
 };
 
-const UsersContainer = connect(
+export default compose(connect(
   mapStateToProps,
   {
     follow, unFollow, setCurrentPage, setfollowingInProgress, getUsers,
   }
 
-)(AuthUsersRedirect);
-export default UsersContainer;
+),
+  withAuthRedirect)(UsersComponent);
