@@ -1,5 +1,5 @@
 .app-wrapper {
-    background-color: black;
+    background-color: #333639;
     margin: 10 auto;
     display: grid;
     width: 1438px;
@@ -19,9 +19,9 @@
 
 .appWraperContent {
     grid-area: c;
-    background-color: black;
+    background-color: #333639;
 text-decoration-color: 00bfff;
 }
 .globolColorText{
-    color:#00bfff;
+    color:#EEEEEE;
 }

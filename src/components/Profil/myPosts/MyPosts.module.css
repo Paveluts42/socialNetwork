@@ -4,7 +4,7 @@
 }
 
 .posts{
-    color:yellow;
+    color:#9EFF9D;
     margin-top: 10px;
 }
 .button:hover,
@@ -16,7 +16,7 @@
     --width:250px;
     --height:70px;
     --begin:#00bfff;
-    --end:yellow;
+    --end:rgb(212, 0, 0);
     position: relative;
     display: inline-block;
     width: var(--width);

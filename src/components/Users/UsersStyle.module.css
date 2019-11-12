@@ -5,9 +5,9 @@
 }
 .selectedPage{
   font-weight: bold;
-  color: #00bfff;
+  color: #EEEEEE;
 }
-#color{color:#00bfff;;}
+#color{color:#EEEEEE;;}
     
 
 .button:hover,
@@ -18,8 +18,8 @@
 .button{
     --width:150px;
     --height:50px;
-    --begin:#00bfff;
-    --end:yellow;
+    --begin: #5a5a5a;
+    --end: #0000;
     position: relative;
     display: inline-block;
     width: var(--width);
