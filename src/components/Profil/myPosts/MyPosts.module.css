@@ -4,7 +4,7 @@
 }
 
 .posts{
-    color:#9EFF9D;
+    color:#EEEEEE;
     margin-top: 10px;
 }
 .button:hover,
@@ -15,8 +15,8 @@
 .button{
     --width:250px;
     --height:70px;
-    --begin:#00bfff;
-    --end:rgb(212, 0, 0);
+    --begin:#838383;
+    --end:#EEEEEE;
     position: relative;
     display: inline-block;
     width: var(--width);

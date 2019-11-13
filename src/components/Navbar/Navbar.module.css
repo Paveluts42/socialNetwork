@@ -7,13 +7,13 @@
 }
 
 .item a {
-    color: #00bfff;
+    color: #626262;
     text-decoration: none;
     text-align: center;
   margin-top: 10px;
 }
 .item a.activeLink{
-    color: #00bfff;
+    color: #626262;
   
 
 }
@@ -23,11 +23,11 @@
 }
 .frends a{
     text-decoration: none;
-    color:#00bfff;
+    color:#626262;
 
 }
 .frends a.activeLink {
-    color: #00bfff;
+    color: #626262;
 
 }
 .gif{
