@@ -19,7 +19,6 @@ class UsersComponent extends React.Component {
 
   }
 
-
   render() {
     if (!this.props.isAuth) {
       return <Redirect to={"/login"} />
@@ -27,6 +26,7 @@ class UsersComponent extends React.Component {
     return (<>
       {this.props.isFeaching ? <Preloader /> : null}
       < Users
+
         setfollowingInProgress={this.props.setfollowingInProgress}
         isFeaching={this.props.isFeaching}
         totalUsetsCount={this.props.totalUsetsCount}
@@ -36,7 +36,8 @@ class UsersComponent extends React.Component {
         unFollow={this.props.unFollow}
         onPageChanged={this.onPageChanged}
         followingInProgress={this.props.followingInProgress}
-        follow={this.props.follow} />
+        follow={this.props.follow} id={this.props.users.id} />
+
     </>
     )
   }

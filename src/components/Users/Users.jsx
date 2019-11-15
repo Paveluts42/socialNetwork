@@ -10,16 +10,16 @@ let Users = (props) => {
         pages.push(i)
 
     }
-    return (<div key={props.key}>
+    return (<div>
         <div>
             {pages.map(p => {
-                return <span id={s.color} onClick={(e) => { props.onPageChanged(p) }}>{p + ".."}</span>
+                return <span key={p.toString()} id={s.color} onClick={(e) => { props.onPageChanged(p) }}>{p + ".."}</span>
             })}
 
         </div>
         {
             props.users.map(u => (
-                <div>
+                <div key={u.id} >
                     <span>
                         <div>
 

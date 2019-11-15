@@ -17,7 +17,7 @@ const Profileinfo = (props) => {
                 <img className={s.profilPhoto} src={props.profile.photos.large != null ? props.profile.photos.large : UserPhoto} />
 
                 <h4 className="globolColorText">{props.profile.fullName}</h4>
-                <ProfileStatus status={"hello my frends"} />
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
                 <h1 className="globolColorText">{props.profile.aboutMe}</h1>
                 <h6 className="globolColorText">{props.profile.contacts.vk}</h6>
             </div>

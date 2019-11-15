@@ -11,6 +11,15 @@ export const ProfileSetAPI = {
     profilSetUser(userId) {
         return (
             instanse.get(`profile/${userId}`))
+    }, getStatus(userId) {
+        return (
+            instanse.get(`profile/status/${userId}`))
+    },
+    updateStatus(status) {
+        return (
+            instanse.put(`profile/status`, { status: status }))
+
+
     }
 }
 

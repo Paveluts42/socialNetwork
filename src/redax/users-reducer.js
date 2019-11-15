@@ -56,13 +56,12 @@ const usersReducers = (state = initialState, action) => {
         followingInProgress: action.isFeaching ?
           [...state.followingInProgress, action.userId]
           :
-          state.followingInProgress.filter(id => id != action.userId)
+          state.followingInProgress.filter(id => id !== action.userId)
       };
     default:
       return state;
   }
 };
-debugger
 export const followSuccess = userId => ({ type: FOLLOW, userId });
 export const unFollowSuccess = userId => ({ type: UN_FOLLOW, userId });
 export const setUsers = user => ({ type: SET_USER, user });
@@ -81,7 +80,6 @@ export const getUsers = (currentPage, pageSize) => {
   }
   )
 }
-debugger
 export const follow = (userId) => {
   return ((dispatch) => {
     dispatch(setfollowingInProgress(true, userId))
