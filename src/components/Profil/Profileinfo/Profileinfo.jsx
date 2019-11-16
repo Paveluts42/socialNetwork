@@ -1,6 +1,6 @@
 import React from "react"
 import s from "./Profileinfo.module.css"
-import Preloader from "../../common/preloader"
+import Preloader from "../../common/Preloader"
 import ProfileStatus from "./ProfileStatus"
 import UserPhoto from "../../../content/img projekt/016f722ab179a9441086e259856049b0.jpg"
 const Profileinfo = (props) => {
@@ -14,7 +14,7 @@ const Profileinfo = (props) => {
 
             </div>
             <div className={s.descriptionBlock}>
-                <img className={s.profilPhoto} src={props.profile.photos.large != null ? props.profile.photos.large : UserPhoto} />
+                <img className={s.profilPhoto} alt="piple" src={props.profile.photos.large != null ? props.profile.photos.large : UserPhoto} />
 
                 <h4 className="globolColorText">{props.profile.fullName}</h4>
                 <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
