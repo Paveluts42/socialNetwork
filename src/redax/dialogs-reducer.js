@@ -1,5 +1,5 @@
 const addMess = "ADD-MESS";
-const updateNewMess = "UPDATE-NEW-MESS-TEXT";
+
 let inisialState = {
   dialogsData: [
     { id: 1, name: "Nastya" },
@@ -16,22 +16,18 @@ let inisialState = {
     { id: 4, message: "bob" },
     { id: 5, message: "himre" },
     { id: 6, message: "memes" }
-  ],
-  newMessageText: ""
+  ]
 };
 let idAdd = 7;
 const dialogsReducer = (state = inisialState, action) => {
   switch (action.type) {
-    case updateNewMess:
-      return { ...state, newMessageText: action.newMess };
     case addMess:
       idAdd++;
       return {
         ...state,
-        newMessageText: "",
         messagesData: [
           ...state.messagesData,
-          { id: idAdd, message: state.newMessageText }
+          { id: idAdd, message: action.newMessageBody }
         ]
       };
 
@@ -40,10 +36,7 @@ const dialogsReducer = (state = inisialState, action) => {
   }
 };
 
-export const addMessing = () => ({ type: addMess });
-export const updateNewMessText = text => ({
-  type: updateNewMess,
-  newMess: text
-});
+export const addMessing = (newMessageBody) => ({ type: addMess, newMessageBody });
+
 
 export default dialogsReducer;

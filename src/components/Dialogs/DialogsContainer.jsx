@@ -1,5 +1,5 @@
 import Dialogs from "./Dialogs";
-import { addMessing, updateNewMessText } from "../../redax/dialogs-reducer";
+import { addMessing } from "../../redax/dialogs-reducer";
 import { connect } from "react-redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect"
 import { compose } from "redux";
@@ -18,11 +18,9 @@ let mapDispatchToProps = dispatch => {
 
   return {
 
-    updateNewMessText: change => {
-      dispatch(updateNewMessText(change));
-    },
-    addMessing: () => {
-      dispatch(addMessing());
+
+    addMessing: (newMessageBody) => {
+      dispatch(addMessing(newMessageBody));
     }
   };
 };
