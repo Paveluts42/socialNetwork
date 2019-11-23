@@ -36,6 +36,14 @@ export const usersAPI = {
 }
 export const authAPI = {
     me() {
-        return (instanse.get(`auth/me`))
+        return (instanse.get(`auth/me`));
+    },
+    login(email, password, rememberMe) {
+        return (instanse.post(`auth/login`, { email, password, rememberMe }));
+    },
+
+    loginOut() {
+        return (instanse.delete(`auth/login`));
+
     }
 }
