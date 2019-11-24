@@ -16,11 +16,13 @@ let initialState = {
   currentPage: 2,
   isFeaching: true,
   followingInProgress: [3],
+  fake: 10
 
 };
 
 const usersReducers = (state = initialState, action) => {
   switch (action.type) {
+    case "Fake": return { ...state, fake: state.fake + 1 }
     case FOLLOW:
       return {
         ...state,
@@ -69,10 +71,11 @@ export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentP
 export const setTotalUsersCount = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount })
 export const setIsFeaching = isFeaching => ({ type: TOGGLE_IS_FEACHING, isFeaching })
 export const setfollowingInProgress = (isFeaching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFeaching, userId })
-export const getUsers = (currentPage, pageSize) => {
+export const getAllUsers = (page, pageSize) => {
   return ((dispatch) => {
-    dispatch(setIsFeaching(false));
-    usersAPI.getUsers(currentPage, pageSize).then(data => {
+    dispatch(setIsFeaching(true));
+    dispatch(setCurrentPage(page));
+    usersAPI.getUsers(page, pageSize).then(data => {
       dispatch(setIsFeaching(false));
       dispatch(setUsers(data.items));
       dispatch(setTotalUsersCount(data.totalCount))
