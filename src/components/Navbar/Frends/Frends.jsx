@@ -1,12 +1,12 @@
 import React from "react"
 import s from "./Frends.module.css"
+import userImg from "../../../content/img projekt/user.png";
+const Frends = (props) => {
 
-const Frends=(props)=>{
-
-    return(
+    return (
         <div>
             <div className={s.fred}>
-                <img className={s.gif} src="https://i.pinimg.com/originals/01/6f/72/016f722ab179a9441086e259856049b0.jpg" alt=""/>
+                <img className={s.gif} src={userImg} alt="" />
                 {props.name}
             </div>
         </div>

@@ -5,3 +5,8 @@
 
 .formControl.error span
 {color: red  }
+.formSummaryError{
+  
+    padding: 5px;
+    color:rgb(206, 0, 41);
+}

@@ -6,7 +6,7 @@ import { required } from "../../utils/validators/validators";
 import { connect } from "react-redux";
 import { login } from "../../redax/auth-reducer"
 import { Redirect } from "react-router-dom";
-
+import style from "../../components/common/formsControls/FormsControls.module.css"
 
 const LoginForm = (props) => {
     return (
@@ -14,13 +14,15 @@ const LoginForm = (props) => {
             <div><Field placeholder={"Email"} name={"email"} validate={[required]} component={Input} /></div>
             <div><Field placeholder={"Password"} name={"password"} type={"password"} validate={[required]} component={Input} /></div>
             <div className={"globolColorText"} ><Field name={"rememberMe"} component={Input} type={"checkbox"} /> remember me</div>
+            {props.error && <div className={style.formSummaryError}>{props.error}</div>}
             <div><button className={s.button}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>Login</button></div>
+
         </form>)
 }
 
 
 const ReduxLoginForm = reduxForm({
-    form: "email"
+    form: "login"
 })(LoginForm);
 
 
