@@ -20,7 +20,6 @@ class UsersComponent extends React.Component {
   }
 
   render() {
-    console.log("dmms")
     if (!this.props.isAuth) {
       return <Redirect to={"/login"} />
     }
@@ -46,7 +45,6 @@ class UsersComponent extends React.Component {
 }
 
 let mapStateToProps = state => {
-  console.log("fjksdjfk")
   return {
     users: getUsers(state),
     pageSize: getPageSize(state),

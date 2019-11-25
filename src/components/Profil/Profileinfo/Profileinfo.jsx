@@ -1,7 +1,7 @@
 import React from "react"
 import s from "./Profileinfo.module.css"
 import Preloader from "../../common/Preloader"
-import ProfileStatus from "./ProfileStatus"
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks"
 import UserPhoto from "../../../content/img projekt/user.png"
 const Profileinfo = (props) => {
 
@@ -17,7 +17,7 @@ const Profileinfo = (props) => {
                 <img className={s.profilPhoto} alt="piple" src={props.profile.photos.large != null ? props.profile.photos.large : UserPhoto} />
 
                 <h4 className="globolColorText">{props.profile.fullName}</h4>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
                 <h1 className="globolColorText">{props.profile.aboutMe}</h1>
                 <h6 className="globolColorText">{props.profile.contacts.vk}</h6>
             </div>

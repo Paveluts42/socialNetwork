@@ -16,13 +16,10 @@ let initialState = {
   currentPage: 2,
   isFeaching: true,
   followingInProgress: [3],
-  fake: 10
-
 };
 
 const usersReducers = (state = initialState, action) => {
   switch (action.type) {
-    case "Fake": return { ...state, fake: state.fake + 1 }
     case FOLLOW:
       return {
         ...state,
