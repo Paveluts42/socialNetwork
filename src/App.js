@@ -15,6 +15,7 @@ import { withRouter } from "react-router-dom"
 import { compose } from "redux"
 import { initializeApp } from "./redax/app-reducer "
 import Preloader from "./components/common/Preloader";
+
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp()
@@ -37,7 +38,9 @@ class App extends React.Component {
           <Route path="/users" render={() => <UsersContainer />} />
           <Route path="/login" render={() => <Login />} />
         </div>
-      </div>)
+      </div>
+
+    )
   };
 };
 const mapStateToProps = (state) => ({ initialized: state.app.initialized })

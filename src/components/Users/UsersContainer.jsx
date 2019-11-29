@@ -10,12 +10,12 @@ import { compose } from "redux";
 import { getUsers, getPageSize, getTotalUsersCount, getCurrentPage, getIsFeaching, getFollowingInProgress, getIsAuth } from "../../redax/users-selectors"
 class UsersComponent extends React.Component {
   componentDidMount() {
-    this.props.getAllUsers(this.props.currentPage, this.props.pageSize);
-
+    const { currentPage, pageSize } = this.props
+    this.props.getAllUsers(currentPage, pageSize);
   }
   onPageChanged = (pageNumber) => {
-
-    this.props.getAllUsers(pageNumber, this.props.pageSize);
+    const { pageSize } = this.props
+    this.props.getAllUsers(pageNumber, pageSize);
 
   }
 

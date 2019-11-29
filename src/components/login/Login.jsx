@@ -1,20 +1,23 @@
 import React from "react";
 import s from "./Login.module.css";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { Input } from "../common/formsControls/FormsControls";
 import { required } from "../../utils/validators/validators";
 import { connect } from "react-redux";
 import { login } from "../../redax/auth-reducer"
 import { Redirect } from "react-router-dom";
 import style from "../../components/common/formsControls/FormsControls.module.css"
+import { createField } from "../../components/common/formsControls/FormsControls"
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
     return (
-        <form onSubmit={props.handleSubmit} action="">
-            <div><Field placeholder={"Email"} name={"email"} validate={[required]} component={Input} /></div>
-            <div><Field placeholder={"Password"} name={"password"} type={"password"} validate={[required]} component={Input} /></div>
-            <div className={"globolColorText"} ><Field name={"rememberMe"} component={Input} type={"checkbox"} /> remember me</div>
-            {props.error && <div className={style.formSummaryError}>{props.error}</div>}
+        <form onSubmit={handleSubmit} action="">
+            {createField("Email", "email", [required], Input)}
+            {createField("Password", "password", [required], Input, { type: "password" })}
+            <div className="globolColorText">
+                {createField("rememberMe", "rememberMe", null, Input, { type: "checkbox" }, "remember me")}
+            </div>
+            {error && <div className={style.formSummaryError}>{error}</div>}
             <div><button className={s.button}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>Login</button></div>
 
         </form>)
@@ -26,11 +29,11 @@ const ReduxLoginForm = reduxForm({
 })(LoginForm);
 
 
-const Login = (props) => {
+const Login = ({ login, isAuth }) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        login(formData.email, formData.password, formData.rememberMe)
     }
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to={"/profile"} />
     }
 

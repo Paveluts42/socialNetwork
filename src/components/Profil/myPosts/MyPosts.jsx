@@ -8,9 +8,7 @@ import { TextArea } from "../../common/formsControls/FormsControls"
 
 
 const maxLength10 = maxLengthCreator(10)
-const MyPostForm = (props) => {
-
-
+const MyPostForm = React.memo((props) => {
   return (
     <form onSubmit={props.handleSubmit}>
 
@@ -27,7 +25,7 @@ const MyPostForm = (props) => {
       </div>
     </form>
   )
-}
+})
 
 const ReduxMyPostForm = reduxForm({ form: "post" })(MyPostForm)
 
@@ -35,7 +33,7 @@ const ReduxMyPostForm = reduxForm({ form: "post" })(MyPostForm)
 const MyPosts = props => {
 
 
-  let post = props.posts.map(p => {
+  let post = [...props.posts].reverse().map(p => {
     return <Post className="globolColorText" message={p.message} key={p.id} likesCount={p.likesCount} />;
   });
   let AddPost = (values) => {

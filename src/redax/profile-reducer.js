@@ -1,9 +1,10 @@
 import { ProfileSetAPI } from "../api/Api";
 
-const addPost = "ADD-POST";
+const addPost = "profile/ADD-POST";
 
-const SETUSERPROFILE = "SETUSERPROFILE";
-const SETSTATUS = "SETSTATUS";
+const SETUSERPROFILE = "profile/SETUSERPROFILE";
+const SETSTATUS = "profile/SETSTATUS";
+const DELETEPOST = "profile/DELETEPOST";
 let initialState = {
   posts: [
     { id: 1, likesCount: 1, message: "hi,how are you?" },
@@ -40,6 +41,9 @@ const profileReducer = (state = initialState, action) => {
     case SETSTATUS: {
       return { ...state, status: action.status }
     }
+    case DELETEPOST: {
+      return { ...state, posts: state.posts.filter(p => p.id !== action.postId) }
+    }
 
     default:
       return state;
@@ -48,28 +52,26 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = (posted) => ({ type: addPost, posted });
 export const setUserProfile = (profile) => ({ type: SETUSERPROFILE, profile });
 export const setStatus = (status) => ({ type: SETSTATUS, status });
+export const deletePost = (postId) => ({ type: DELETEPOST, postId });
 
-export const newUser = (userId) => (dispatch) => {
-
-  ProfileSetAPI.profilSetUser(userId).then(response => {
-    dispatch(setUserProfile(response.data))
-  })
-
+export const newUser = (userId) => async (dispatch) => {
+  let response = await ProfileSetAPI.profilSetUser(userId)
+  dispatch(setUserProfile(response.data))
 }
 
-export const getStatus = (userId) =>
-  (dispatch) => {
-    ProfileSetAPI.getStatus(userId).then(response => { dispatch(setStatus(response.data)) }
+export const getStatus = (userId) => async (dispatch) => {
+  let response = await ProfileSetAPI.getStatus(userId);
+  dispatch(setStatus(response.data))
+}
 
-    )
+
+export const updateStatus = (status) => async (dispatch) => {
+  let response = await ProfileSetAPI.updateStatus(status);
+  if (response.data.resultCode === 0) {
+    dispatch(setStatus(status))
   }
-
-
-export const updateStatus = (status) => (dispatch) => {
-  ProfileSetAPI.updateStatus(status).then(response => { if (response.data.resultCode === 0) { dispatch(setStatus(status)) } }
-
-  )
 }
+
 
 
 
