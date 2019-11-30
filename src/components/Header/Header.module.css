@@ -10,7 +10,8 @@
     ;
    
 }
-
+a{text-decoration: none;
+color: white;}
 .loginBlock{
     float:right;
 width: 300px;

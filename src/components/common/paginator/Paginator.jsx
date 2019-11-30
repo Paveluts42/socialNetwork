@@ -1,18 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from "./Paginator.module.css";
-let Paginator = ({ totalUsetsCount, pageSize, currentPage, onPageChanged }) => {
-    let pagesCount = Math.ceil(totalUsetsCount / pageSize);
+import cn from "classnames";
+let Paginator = ({ totalItemCount, pageSize, currentPage, onPageChanged, portionSize = 10 }) => {
+    let pagesCount = Math.ceil(totalItemCount / pageSize);
     let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
+    for (let i = 0; i <= pagesCount; i++) {
         pages.push(i)
 
     }
-    return (
-        <div>
-            {pages.map(p => {
-                return <span key={p.toString()} id={s.color} className={currentPage === p && s.selectedPage} onClick={(e) => { onPageChanged(p) }}>{p + ".."}</span>
-            })}
+    let portionCount = Math.ceil(pagesCount / portionSize)
+    let [portionNuber, setPortionNumber] = useState(1)
+    let leftPortionPageNumber = (portionNuber - 1) * portionSize + 1;
+    let rightPortionPageNumber = portionNuber * portionSize;
 
+    return (
+        <div >
+            {portionNuber > 1 &&
+                <button className={s.button} onClick={() => { setPortionNumber(portionNuber - 1) }}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>{"<=PREV"}</button>}
+            {pages
+                .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+                .map((p) => {
+                    return (
+                        <span className={cn({
+                            [s.selectedPage]: currentPage === p
+                        },
+                            s.pageNumber)}
+                            key={p}
+                            style={{ color: "white" }}
+                            onClick={(e) => {
+                                onPageChanged(p);
+                            }}>{p}</span>
+                    )
+                })
+            }{portionCount > portionNuber &&
+                <button className={s.button} onClick={() => { setPortionNumber(portionNuber + 1) }}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>{"NEXT=>"}</button>}
         </div>
 
 

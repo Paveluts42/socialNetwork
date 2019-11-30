@@ -4,7 +4,7 @@ import OneUser from './OneUser';
 
 let Users = ({ pageSize, totalUsetsCount, onPageChanged, currentPage, ...props }) => {
     return (<div>
-        <Paginator currentPage={currentPage} pageSize={pageSize} totalUsetsCount={totalUsetsCount} onPageChanged={onPageChanged} />
+        <Paginator currentPage={currentPage} pageSize={pageSize} totalItemCount={totalUsetsCount} onPageChanged={onPageChanged} />
         {
             props.users.map(u => <OneUser followingInProgress={props.followingInProgress} follow={props.follow} unFollow={props.unFollow} user={u} key={u.id} />)
         }

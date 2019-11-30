@@ -9,9 +9,8 @@ const TOGGLE_IS_FEACHING = "users/TOGGLE_IS_FEACHING";
 const TOGGLE_IS_FOLLOWING_PROGRESS = "users/TOGGLE_IS_FOLLOWING_PROGRESS";
 
 let initialState = {
-  users: [
-
-  ], pageSize: 20,
+  users: [],
+  pageSize: 20,
   totalUsersCount: 30,
   currentPage: 2,
   isFeaching: true,
