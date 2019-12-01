@@ -1,13 +1,14 @@
 .paginator {
-  margin: 1px;
+  margin: 20px;
 }
 .pageNumber {
-  margin-top: auto;
-  padding: 5px;
+  margin: auto;
+  padding: 15px;
   border: 1px solid white;
 }
 
 .pageNumber.selectedPage {
+
   font-weight: bold;
   border-color: white;
 }
@@ -20,8 +21,8 @@
     color:var(--end);
 }
 .button{
-    --width:150px;
-    --height:50px;
+    --width:100px;
+    --height:30px;
     --begin: #5a5a5a;
     --end: #0000;
     position: relative;

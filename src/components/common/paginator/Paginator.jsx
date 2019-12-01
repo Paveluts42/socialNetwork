@@ -14,13 +14,14 @@ let Paginator = ({ totalItemCount, pageSize, currentPage, onPageChanged, portion
     let rightPortionPageNumber = portionNuber * portionSize;
 
     return (
-        <div >
+        <div style={{ marginLeft: 400 }}>
             {portionNuber > 1 &&
                 <button className={s.button} onClick={() => { setPortionNumber(portionNuber - 1) }}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>{"<=PREV"}</button>}
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map((p) => {
                     return (
+
                         <span className={cn({
                             [s.selectedPage]: currentPage === p
                         },
@@ -34,8 +35,8 @@ let Paginator = ({ totalItemCount, pageSize, currentPage, onPageChanged, portion
                 })
             }{portionCount > portionNuber &&
                 <button className={s.button} onClick={() => { setPortionNumber(portionNuber + 1) }}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>{"NEXT=>"}</button>}
-        </div>
 
+        </div>
 
     )
 }
