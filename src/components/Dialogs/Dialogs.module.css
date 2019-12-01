@@ -39,8 +39,8 @@
 .button{
     --width:250px;
     --height:70px;
-    --begin:#00bfff;
-    --end:yellow;
+    --begin:#5a5a5a;
+    --end:#EEEEEE;
     position: relative;
     display: inline-block;
     width: var(--width);
