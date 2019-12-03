@@ -13,8 +13,8 @@ let OneUser = ({ user, followingInProgress, unFollow, follow, ...props }) => {
                     </NavLink>
                     <div>
                         {user.followed ? (
-                            <button className={s.button} disabled={followingInProgress.some(id => id === user.id)} onClick={() => { unFollow(user.id) }}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>UnFollow</button>)
-                            : (<button className={s.button} disabled={followingInProgress.some(id => id === user.id)} onClick={() => { follow(user.id) }}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>Follow</button>)}
+                            <button className={"button"} disabled={followingInProgress.some(id => id === user.id)} onClick={() => { unFollow(user.id) }}><svg className={"button__svg"}><rect className={"button__rect"}></rect></svg>UnFollow</button>)
+                            : (<button className={"button"} disabled={followingInProgress.some(id => id === user.id)} onClick={() => { follow(user.id) }}><svg className={"button__svg"}><rect className={"button__rect"}></rect></svg>Follow</button>)}
                     </div>
                 </div>
             </span>

@@ -15,7 +15,7 @@ const AddMessageForm = (props) => {
         <Field component={TextArea} validate={[required, maxLength20]} name="newMessageBody" placeholder={"enter you message"} />
       </div>
       <div>
-        <button className={s.button} ><svg className={s.button__svg}> <rect className={s.button__rect}></rect></svg>send</button>
+        <button className={"button"} ><svg className={"button__svg"}> <rect className={"button__rect"}></rect></svg>send</button>
       </div>
     </form>)
 }

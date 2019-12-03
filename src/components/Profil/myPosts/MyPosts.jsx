@@ -18,7 +18,7 @@ const MyPostForm = React.memo((props) => {
         />
 
         <div className={s.buttonArea}>
-          <button className={s.button}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>add post</button>
+          <button className={"button"}><svg className={"button__svg"}><rect className={"button__rect"}></rect></svg>add post</button>
         </div>
 
 

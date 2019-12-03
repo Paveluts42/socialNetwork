@@ -16,7 +16,7 @@ let Paginator = ({ totalItemCount, pageSize, currentPage, onPageChanged, portion
     return (
         <div style={{ marginLeft: 400 }}>
             {portionNuber > 1 &&
-                <button className={s.button} onClick={() => { setPortionNumber(portionNuber - 1) }}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>{"<=PREV"}</button>}
+                <button className={"button"} onClick={() => { setPortionNumber(portionNuber - 1) }}><svg className={"button__svg"}><rect className={"button__rect"}></rect></svg>{"<=PREV"}</button>}
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map((p) => {
