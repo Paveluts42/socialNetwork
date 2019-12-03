@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/socialNetworkKama/static/css/main.8ce0a9d4.chunk.css",
-    "main.js": "/socialNetworkKama/static/js/main.41dcfc08.chunk.js",
-    "main.js.map": "/socialNetworkKama/static/js/main.41dcfc08.chunk.js.map",
+    "main.js": "/socialNetworkKama/static/js/main.2b23b670.chunk.js",
+    "main.js.map": "/socialNetworkKama/static/js/main.2b23b670.chunk.js.map",
     "runtime-main.js": "/socialNetworkKama/static/js/runtime-main.c4f791a4.js",
     "runtime-main.js.map": "/socialNetworkKama/static/js/runtime-main.c4f791a4.js.map",
-    "static/js/2.27041812.chunk.js": "/socialNetworkKama/static/js/2.27041812.chunk.js",
-    "static/js/2.27041812.chunk.js.map": "/socialNetworkKama/static/js/2.27041812.chunk.js.map",
+    "static/js/2.2dc87d90.chunk.js": "/socialNetworkKama/static/js/2.2dc87d90.chunk.js",
+    "static/js/2.2dc87d90.chunk.js.map": "/socialNetworkKama/static/js/2.2dc87d90.chunk.js.map",
     "index.html": "/socialNetworkKama/index.html",
-    "precache-manifest.3dcc262578c85d8321f6563c2fe7982d.js": "/socialNetworkKama/precache-manifest.3dcc262578c85d8321f6563c2fe7982d.js",
+    "precache-manifest.2cfe0dfc40064ff2e767d477f247012b.js": "/socialNetworkKama/precache-manifest.2cfe0dfc40064ff2e767d477f247012b.js",
     "service-worker.js": "/socialNetworkKama/service-worker.js",
     "static/css/main.8ce0a9d4.chunk.css.map": "/socialNetworkKama/static/css/main.8ce0a9d4.chunk.css.map",
-    "static/js/2.27041812.chunk.js.LICENSE": "/socialNetworkKama/static/js/2.27041812.chunk.js.LICENSE",
+    "static/js/2.2dc87d90.chunk.js.LICENSE": "/socialNetworkKama/static/js/2.2dc87d90.chunk.js.LICENSE",
     "static/media/ajax-loader.gif": "/socialNetworkKama/static/media/ajax-loader.92a4a31e.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.c4f791a4.js",
-    "static/js/2.27041812.chunk.js",
+    "static/js/2.2dc87d90.chunk.js",
     "static/css/main.8ce0a9d4.chunk.css",
-    "static/js/main.41dcfc08.chunk.js"
+    "static/js/main.2b23b670.chunk.js"
   ]
 }
