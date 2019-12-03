@@ -1,5 +1,4 @@
 import React from "react";
-import s from "./Login.module.css";
 import { reduxForm } from "redux-form";
 import { Input } from "../common/formsControls/FormsControls";
 import { required } from "../../utils/validators/validators";
@@ -18,7 +17,7 @@ const LoginForm = ({ handleSubmit, error }) => {
                 {createField("rememberMe", "rememberMe", null, Input, { type: "checkbox" }, "remember me")}
             </div>
             {error && <div className={style.formSummaryError}>{error}</div>}
-            <div><button className={s.button}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>Login</button></div>
+            <div><button className={"button"}><svg className={"button__svg"}><rect className={"button__rect"}></rect></svg>Login</button></div>
 
         </form>)
 }
