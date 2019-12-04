@@ -18,9 +18,19 @@ export const ProfileSetAPI = {
     updateStatus(status) {
         return (
             instanse.put(`profile/status`, { status: status }))
+    },
+    savePhoto(photoFile) {
+        const formData = new FormData()
+        formData.append("image", photoFile)
+        return (
 
-
-    }
+            instanse.put(`profile/photo`, formData, {
+                headers:
+                {
+                    "Content-Type": "multipart/from-data"
+                }
+            }))
+    },
 }
 
 

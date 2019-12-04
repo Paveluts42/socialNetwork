@@ -34,7 +34,7 @@ let Paginator = ({ totalItemCount, pageSize, currentPage, onPageChanged, portion
                     )
                 })
             }{portionCount > portionNuber &&
-                <button className={s.button} onClick={() => { setPortionNumber(portionNuber + 1) }}><svg className={s.button__svg}><rect className={s.button__rect}></rect></svg>{"NEXT=>"}</button>}
+                <button className={"button"} onClick={() => { setPortionNumber(portionNuber + 1) }}><svg className={"button__svg"}><rect className={"button__rect"}></rect></svg>{"NEXT=>"}</button>}
 
         </div>
 
