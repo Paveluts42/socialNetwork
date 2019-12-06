@@ -31,6 +31,9 @@ export const ProfileSetAPI = {
                 }
             }))
     },
+    saveProfile(profile) {
+        return (instanse.put(`profile`, profile))
+    }
 }
 
 
