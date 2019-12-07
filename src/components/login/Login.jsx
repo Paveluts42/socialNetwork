@@ -8,7 +8,7 @@ import { Redirect } from "react-router-dom";
 import style from "../../components/common/formsControls/FormsControls.module.css"
 import { createField } from "../../components/common/formsControls/FormsControls"
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, _error, captchaUrl }) => {
     return (
         <form onSubmit={handleSubmit} action="">
             {createField("Email", "email", [required], Input)}
@@ -16,7 +16,9 @@ const LoginForm = ({ handleSubmit, error }) => {
             <div className="globolColorText">
                 {createField("rememberMe", "rememberMe", null, Input, { type: "checkbox" }, "remember me")}
             </div>
-            {error && <div className={style.formSummaryError}>{error}</div>}
+            {captchaUrl && <img src={captchaUrl} alt={"captcha"} />}
+            {captchaUrl && createField("antibot symbols", "captcha", [required], Input, {})}
+            {_error && <div className={style.formSummaryError}>{_error}</div>}
             <div><button className={"button"}><svg className={"button__svg"}><rect className={"button__rect"}></rect></svg>Login</button></div>
 
         </form>)
@@ -28,20 +30,22 @@ const ReduxLoginForm = reduxForm({
 })(LoginForm);
 
 
-const Login = ({ login, isAuth }) => {
+const Login = (props) => {
     const onSubmit = (formData) => {
-        login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
-    if (isAuth) {
+    if (props.isAuth) {
         return <Redirect to={"/profile"} />
     }
 
     return (<div>
         <h1 className={"globolColorText"}>Login</h1>
-        <ReduxLoginForm onSubmit={onSubmit} />
+        <ReduxLoginForm onSubmit={onSubmit} captchaUrl={props.captcha} />
     </div>)
 }
+
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captcha: state.auth.captchaUrl,
 })
 export default connect(mapStateToProps, { login, })(Login)
