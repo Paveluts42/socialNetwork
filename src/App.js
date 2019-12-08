@@ -10,15 +10,24 @@ import ProfilContainer from "./components/Profil/ProfilContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import { connect } from "react-redux"
-import { withRouter } from "react-router-dom"
+import { withRouter, Switch } from "react-router-dom"
 import { compose } from "redux"
 import { initializeApp } from "./redax/app-reducer "
 import Preloader from "./components/common/Preloader";
 const LazyUsersContainer = React.lazy(() => import("./components/Users/UsersContainer"))
 
 class App extends Component {
+  catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    alert("some error");
+    console.error(promiseRejectionEvent)
+  }
   componentDidMount() {
-    this.props.initializeApp()
+    this.props.initializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors)
+
+  }
+  componentWillUnmount() {
+    window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors)
 
   }
   render() {
@@ -29,14 +38,20 @@ class App extends Component {
       <div className="app-wrapper" >
         <HeaderContainer />
         <NavbarContainer />
+
         <div className="appWraperContent">
-          <Route path="/dialogs" render={() => <DialogsContainer />} />
-          <Route path="/profile/:userId?" render={() => <ProfilContainer />} />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/music" render={() => <Music />} />
-          <Route path="/settings" render={() => <Settings />} />
-          <Route path="/users" render={() => { return (<React.Suspense fallback={<Preloader />}><LazyUsersContainer /></React.Suspense>) }} />
-          <Route path="/login" render={() => <Login />} />
+          <Switch >
+
+            <Route path="/dialogs" render={() => <DialogsContainer />} />
+            <Route path="/profile/:userId?" render={() => <ProfilContainer />} />
+            <Route path="/news" render={() => <News />} />
+            <Route path="/music" render={() => <Music />} />
+            <Route path="/settings" render={() => <Settings />} />
+            <Route path="/users" render={() => { return (<React.Suspense fallback={<Preloader />}><LazyUsersContainer /></React.Suspense>) }} />
+            <Route path="/login" render={() => <Login />} />
+            <Route path="*" render={() => <h1 className={"globolColorText"}>404 NOT FOUND</h1>} />
+
+          </Switch>
         </div>
       </div >
 
